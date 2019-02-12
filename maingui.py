@@ -13,7 +13,7 @@ class IndexApp(BaseApp):
         Label(self._group, text = 'Index').pack()
 
     def _menuCallback(self, *args, **kw):
-        pass
+        self.master.printToMsgBox('[IndexApp] To index app.')
 
 
 class MainApp(Frame):
@@ -64,8 +64,8 @@ class MainApp(Frame):
             width = app.MSG_APP_WIDTH, height = app.MSG_APP_HEIGHT)
         group.pack_propagate(0) # 使LabelFrame不随组件变化
         group.pack(side = BOTTOM, padx = 10, pady = 10)
-        self.msgBox = Text(group)
-        self.msgBox.pack()
+        self._msgBox = ScrolledText(group)
+        self._msgBox.pack(expand = 1, fill = "both")
 
     def _menuCallback(self, *args, **kw):
         pass
@@ -80,6 +80,12 @@ class MainApp(Frame):
                 _label = "未知"
             self._toolMenu.add_command(label = _label,
                     command = _mySetit(self, item['app'], self._menuCallback))
+    
+    def printToMsgBox(self, msg):
+        if self._msgBox and type(msg) is str:
+            self._msgBox.insert(END, msg + "\r\n")
+        else:
+            self._msgBox.insert(END, "[MainApp] Error\r\n")
 
 
 class _mySetit:

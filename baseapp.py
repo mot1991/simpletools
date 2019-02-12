@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from tkinter import *
+from tkinter.scrolledtext import ScrolledText
 from tkinter.ttk import *
 from constants import *
 

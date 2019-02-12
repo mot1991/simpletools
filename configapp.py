@@ -29,4 +29,4 @@ class ConfigApp(BaseApp):
         self.TabStrip1.pack()
 
     def _menuCallback(self, *args, **kw):
-        pass
+        self.master.printToMsgBox('[ConfigApp] To config app.')
